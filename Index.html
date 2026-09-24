@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VEERGAME</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(0, 255, 120, 0.35),
+          transparent 40%
+        ),
+        radial-gradient(
+          circle at 85% 85%,
+          rgba(255, 0, 0, 0.35),
+          transparent 40%
+        ),
+        linear-gradient(
+          135deg,
+          #021b0e,
+          #063d20 45%,
+          #310505 100%
+        );
+
+      color: white;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      padding: 45px 28px;
+      text-align: center;
+
+      background: rgba(0, 0, 0, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 25px;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 30px rgba(0, 255, 100, 0.05);
+
+      backdrop-filter: blur(8px);
+    }
+
+    /* Main Logo */
+    .logo {
+      font-size: clamp(40px, 12vw, 62px);
+      font-weight: 1000;
+      letter-spacing: 3px;
+      line-height: 1;
+
+      background:
+        linear-gradient(
+          90deg,
+          #00ff88,
+          #ffffff,
+          #ff3030,
+          #00ff88
+        );
+
+      background-size: 300% auto;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: logoColor 4s linear infinite;
+
+      filter:
+        drop-shadow(0 0 5px rgba(0, 255, 120, 0.6))
+        drop-shadow(0 0 12px rgba(255, 0, 0, 0.25));
+    }
+
+    @keyframes logoColor {
+      to {
+        background-position: 300% center;
+      }
+    }
+
+    /* Heading */
+    h2 {
+      margin-top: 18px;
+      font-size: clamp(22px, 6vw, 30px);
+      font-weight: 900;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ff3838,
+          #ffffff,
+          #00ff88
+        );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Bonus */
+    .bonus-text {
+      margin: 30px 0 25px;
+
+      font-size: clamp(30px, 9vw, 44px);
+      font-weight: 1000;
+      line-height: 1.1;
+      text-transform: uppercase;
+
+      background:
+        linear-gradient(
+          90deg,
+          #00ff88,
+          #ffffff,
+          #ff3333,
+          #00ff88
+        );
+
+      background-size: 300% auto;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation:
+        bonusGlow 1.5s ease-in-out infinite alternate,
+        bonusColor 4s linear infinite;
+    }
+
+    @keyframes bonusGlow {
+      from {
+        transform: scale(1);
+
+        filter:
+          drop-shadow(0 0 4px #00ff88)
+          drop-shadow(0 0 5px #ff3333);
+      }
+
+      to {
+        transform: scale(1.06);
+
+        filter:
+          drop-shadow(0 0 10px #00ff88)
+          drop-shadow(0 0 25px #ff3333)
+          drop-shadow(0 0 35px rgba(255, 255, 255, 0.5));
+      }
+    }
+
+    @keyframes bonusColor {
+      to {
+        background-position: 300% center;
+      }
+    }
+
+    /* Notes */
+    .notes {
+      margin: 20px auto 30px;
+      max-width: 380px;
+
+      text-align: left;
+
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    .notes div {
+      padding: 7px 0;
+    }
+
+    .check {
+      color: #00ff88;
+      margin-right: 7px;
+    }
+
+    /* Button */
+    .button {
+      display: inline-block;
+
+      padding: 16px 40px;
+
+      background: #ffffff;
+      color: #07552f;
+
+      border-radius: 50px;
+
+      text-decoration: none;
+
+      font-size: 19px;
+      font-weight: 1000;
+      letter-spacing: 0.5px;
+
+      box-shadow:
+        0 5px 20px rgba(255, 255, 255, 0.25);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.07);
+
+      box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.4);
+    }
+
+    .button:active {
+      transform: scale(0.97);
+    }
+
+    /* Small screen */
+    @media (max-width: 400px) {
+      .card {
+        padding: 35px 20px;
+      }
+
+      .notes {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <div class="logo">
+      VEERGAME
+    </div>
+
+    <h2>
+      WELCOME TO VEERGAME
+    </h2>
+
+    <div class="bonus-text">
+      🎁 BONUS AVAILABLE 🎁
+    </div>
+
+    <div class="notes">
+
+      <div>
+        <span class="check">✓</span>
+        Create your account
+      </div>
+
+      <div>
+        <span class="check">✓</span>
+        Explore the platform
+      </div>
+
+      <div>
+        <span class="check">✓</span>
+        Check available features
+      </div>
+
+      <div>
+        <span class="check">✓</span>
+        See eligibility and terms
+      </div>
+
+    </div>
+
+    <a href="#" class="button">
+      REGISTERED NOW
+    </a>
+
+  </main>
+
+</body>
+</html>
